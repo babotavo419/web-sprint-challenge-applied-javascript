@@ -1,4 +1,38 @@
 const Card = (article) => {
+
+    const divCard = document.createElement('div');
+    divCard.classList.add('card');
+  
+    const divHeadline = document.createElement('div');
+    divHeadline.classList.add('headline');
+    divHeadline.textContent = article.headline;
+  
+    const divAuthor = document.createElement('div');
+    divAuthor.classList.add('author');
+  
+    const divImgContainer = document.createElement('div');
+    divImgContainer.classList.add('img-container');
+  
+    const imgAuthorPhoto = document.createElement('img');
+    imgAuthorPhoto.src = article.authorPhoto;
+  
+    const spanAuthorName = document.createElement('span');
+    spanAuthorName.textContent = `By ${article.authorName}`;
+  
+    divImgContainer.appendChild(imgAuthorPhoto);
+    divAuthor.appendChild(divImgContainer);
+    divAuthor.appendChild(spanAuthorName);
+  
+    divCard.appendChild(divHeadline);
+    divCard.appendChild(divAuthor);
+  
+    divCard.addEventListener('click', () => {
+      console.log(article.headline);
+    });
+  
+    return divCard;
+  }
+  
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,7 +51,23 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-}
+
+  const cardAppender = (selector) => {
+    fetch('http://localhost:5001/api/articles')
+      .then(response => response.json())
+      .then(data => {
+        const articles = Object.values(data.articles).flat();
+        articles.forEach(article => {
+          const card = Card(article);
+          const element = document.querySelector(selector);
+          element.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
+  }
+  
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
