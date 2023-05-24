@@ -58,7 +58,13 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Demonstrate your understanding of this sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. What is the DOM?
+The document object modle is the tree like strutre where each node is treted like an object.
 2. What is an event?
+ An event is any action that occors as apart pf the programming language.
 3. What is an event listener?
+ An event listener is apart of the prgram that waits for an action before the exicution of a fuction.
 4. Why would we convert a NodeList into an Array?
+ You cant use NodeList with querrySlectAall or similar calls beacsue they only return statict list not live lsit that change like Nodelist.
+ So, with being said, you would want to convert NodeList with Array.from etc.
 5. What is a component?
+ A component can be a button or a form etc. that is used repeatedly. Therefore, you would want to style it once so that it could be duplicated as often as needed.
